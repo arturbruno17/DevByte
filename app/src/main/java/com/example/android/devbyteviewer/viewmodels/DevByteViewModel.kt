@@ -21,9 +21,6 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.example.android.devbyteviewer.database.getDatabase
 import com.example.android.devbyteviewer.repository.VideosRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
 /**
@@ -37,10 +34,6 @@ import kotlinx.coroutines.launch
  * or fragment lifecycle events.
  */
 class DevByteViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val viewModelJob = SupervisorJob()
-
-    private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     private val database = getDatabase(application)
     private val videosRepository = VideosRepository(database)
